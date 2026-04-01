@@ -62,7 +62,7 @@ export default function Contact() {
       return;
     }
     setIsSubmitting(true);
-    
+
     try {
       // 1. Save to Database for the Admin Panel
       await fetch(`${API_BASE_URL}/contact`, {
@@ -112,7 +112,7 @@ export default function Contact() {
       <section className="bg-gradient-to-b from-[#ffffff] to-[#f8fafc] pt-10 sm:pt-20 pb-12 sm:pb-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8 items-center">
-            
+
             {/* Left Column - Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -140,7 +140,7 @@ export default function Contact() {
                 >
                   Send a Message
                 </button>
-                <a href="tel:+917778020756">
+                <a href="tel:+919624657989">
                   <button className="bg-[#21362e] text-[#b8ea27] px-5 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-sm sm:text-lg hover:bg-[#1a2b24] transition-all duration-300 shadow-lg">
                     Call Us Now
                   </button>
@@ -219,7 +219,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-[#21362e] font-bold text-xs leading-tight">Call Us</p>
-                  <p className="text-[#21362e]/55 text-[11px]">{siteSettings?.phoneNumber || '+91 77780 20756'}</p>
+                  <p className="text-[#21362e]/55 text-[11px]">{siteSettings?.phoneNumber || '+91 9624657989'}</p>
                 </div>
               </motion.div>
 
@@ -251,7 +251,7 @@ export default function Contact() {
                 <span className="font-bold text-xs tracking-wide">24hr Response Time</span>
               </motion.div>
             </div>
-            
+
           </div>
         </div>
       </section>
@@ -434,9 +434,9 @@ export default function Contact() {
       </section>
 
 
-      <SuccessModal 
-        isOpen={showSuccessModal} 
-        onClose={() => setShowSuccessModal(false)} 
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
       />
     </>
   );
