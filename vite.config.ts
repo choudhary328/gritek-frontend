@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite'
 import path from 'path'
+import { fileURLToPath } from 'url'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 export default defineConfig({
   plugins: [
@@ -10,7 +14,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: './',
+  base: '/',
   resolve: {
     alias: {
       // Alias @ to the src directory
@@ -22,38 +26,6 @@ export default defineConfig({
   assetsInclude: ['**/*.svg', '**/*.csv'],
   build: {
     chunkSizeWarningLimit: 1000,
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('@mui/material') || id.includes('@mui/icons-material')) {
-              return 'vendor-mui';
-            }
-            if (id.includes('recharts')) {
-              return 'vendor-charts';
-            }
-            if (id.includes('swiper') || id.includes('slick-carousel') || id.includes('react-slick')) {
-              return 'vendor-swiper';
-            }
-            if (id.includes('lucide-react')) {
-              return 'vendor-lucide';
-            }
-            if (id.includes('motion') || id.includes('framer-motion')) {
-              return 'vendor-motion';
-            }
-            if (
-              id.includes('node_modules/react/') ||
-              id.includes('node_modules/react-dom/') ||
-              id.includes('node_modules/react-router/')
-            ) {
-              return 'vendor-react';
-            }
-            // Group other remaining node_modules into a general vendor chunk
-            return 'vendor-others';
-          }
-        },
-      },
-    },
   },
 
   server: {
