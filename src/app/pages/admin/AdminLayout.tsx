@@ -62,7 +62,7 @@ const AdminLayout: React.FC = () => {
   const handleLogout = () => {
     localStorage.removeItem('adminToken');
     localStorage.removeItem('adminUser');
-    navigate('/login');
+    navigate('/admin/login');
   };
 
   const SidebarContent = () => (

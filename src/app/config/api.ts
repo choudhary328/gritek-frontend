@@ -1,2 +1,2 @@
-export const BACKEND_URL = 'https://gritek-solutions.onrender.com';
+export const BACKEND_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:5000';
 export const API_BASE_URL = `${BACKEND_URL}/api`;

@@ -81,7 +81,7 @@ const ProtectedRoute = () => {
   }
 
   if (authState === 'unauthenticated') {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/admin/login" replace />;
   }
 
   return <Outlet />;
@@ -97,26 +97,31 @@ export const router = createBrowserRouter([
       { path: 'portfolio', Component: () => <RouteSuspense><Portfolio /></RouteSuspense> },
       { path: 'about', Component: () => <RouteSuspense><About /></RouteSuspense> },
       { path: 'contact', Component: () => <RouteSuspense><Contact /></RouteSuspense> },
-      { path: 'login', Component: () => <RouteSuspense><Login /></RouteSuspense> },
     ],
   },
   {
     path: '/admin',
-    Component: ProtectedRoute,
     children: [
+      { path: 'login', Component: () => <RouteSuspense><Login /></RouteSuspense> },
       {
         path: '',
-        Component: () => <RouteSuspense><AdminLayout /></RouteSuspense>,
+        Component: ProtectedRoute,
         children: [
-          { index: true, Component: () => <RouteSuspense><AdminDashboard /></RouteSuspense> },
-          { path: 'projects', Component: () => <RouteSuspense><ManageProjects /></RouteSuspense> },
-          { path: 'services', Component: () => <RouteSuspense><ManageServices /></RouteSuspense> },
-          { path: 'reviews', Component: () => <RouteSuspense><ManageReviews /></RouteSuspense> },
-          { path: 'messages', Component: () => <RouteSuspense><ContactMessages /></RouteSuspense> },
-          { path: 'staff', Component: () => <RouteSuspense><ManageStaff /></RouteSuspense> },
-          { path: 'settings', Component: () => <RouteSuspense><SiteSettings /></RouteSuspense> },
-          { path: 'profile', Component: () => <RouteSuspense><AdminProfile /></RouteSuspense> },
-          { path: 'subscribers', Component: () => <RouteSuspense><ManageSubscribers /></RouteSuspense> },
+          {
+            path: '',
+            Component: () => <RouteSuspense><AdminLayout /></RouteSuspense>,
+            children: [
+              { index: true, Component: () => <RouteSuspense><AdminDashboard /></RouteSuspense> },
+              { path: 'projects', Component: () => <RouteSuspense><ManageProjects /></RouteSuspense> },
+              { path: 'services', Component: () => <RouteSuspense><ManageServices /></RouteSuspense> },
+              { path: 'reviews', Component: () => <RouteSuspense><ManageReviews /></RouteSuspense> },
+              { path: 'messages', Component: () => <RouteSuspense><ContactMessages /></RouteSuspense> },
+              { path: 'staff', Component: () => <RouteSuspense><ManageStaff /></RouteSuspense> },
+              { path: 'settings', Component: () => <RouteSuspense><SiteSettings /></RouteSuspense> },
+              { path: 'profile', Component: () => <RouteSuspense><AdminProfile /></RouteSuspense> },
+              { path: 'subscribers', Component: () => <RouteSuspense><ManageSubscribers /></RouteSuspense> },
+            ],
+          },
         ],
       },
     ],
