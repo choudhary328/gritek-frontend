@@ -7,12 +7,12 @@ const Staff = require('../models/Staff');
 const Subscriber = require('../models/Subscriber');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
 
 // API Controller Methods
 
 // Basic health check responder
 exports.getHealthStatus = (req, res) => {
-  const mongoose = require('mongoose');
   const dbState = mongoose.connection.readyState;
   res.status(200).json({
     status: 'success',
